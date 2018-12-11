@@ -1,8 +1,8 @@
 package main
 
 import (
-	"time"
 	"os"
+	"time"
 
 	log "github.com/sirupsen/logrus"
 
@@ -113,11 +113,11 @@ func getConsulHealth() bool {
 
 			// If service is tagged with the serviceTag parameter, mark instance as unhealthy
 			if contains(service.Tags, serviceTag) || (serviceTag == "") {
-				log.WithFields(log.Fields{"service": checks[k].ServiceName,}).Errorln("failing service detected with specified tag, will mark as unhealthy")
+				log.WithFields(log.Fields{"service": checks[k].ServiceName}).Errorln("failing service detected with specified tag, will mark as unhealthy")
 				failures = true
 			} else {
 				// Service was not tagged with serviceTag parameter, so just log
-				log.WithFields(log.Fields{"service": checks[k].ServiceName,}).Warnln("failing service detected")
+				log.WithFields(log.Fields{"service": checks[k].ServiceName}).Warnln("failing service detected")
 			}
 
 		}
@@ -172,10 +172,10 @@ func setInstanceHealth(h bool) {
 
 // Function to looking value in array
 func contains(s []string, e string) bool {
-    for _, a := range s {
-        if a == e {
-            return true
-        }
-    }
-    return false
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
 }
