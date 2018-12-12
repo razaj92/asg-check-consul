@@ -60,6 +60,9 @@ func main() {
 			instanceID = ec2Identity.InstanceID
 			log.Infof("Instance ID: %s", instanceID)
 
+			// Node is initially healthy as per AWS autoscaling API
+			nodeHealth = true
+
 			// Main loop
 			log.Infof("Waiting grace period of %v seconds before checking", recheckDelay)
 			for true {
